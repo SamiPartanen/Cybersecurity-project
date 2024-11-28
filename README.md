@@ -7,8 +7,11 @@ and change to Djangotutorial directory, that includes the manage.py file.
 if you do not have Django you may need to install it with 
 -pip install Django
 then you can run it with 
+
 -python manage.py runserver   
+
 http://127.0.0.1:8000/
+
 User:  	Password:
 user1 	password
 admin 	12345
