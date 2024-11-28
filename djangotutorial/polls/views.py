@@ -114,7 +114,7 @@ def question_xss(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     return render(request, "polls/detail.html", {"question": question})
 
-
+# CSRF flaw
 def malicious_page(request):
     return render(request, "polls/malicious.html")
 

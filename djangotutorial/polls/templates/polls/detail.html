@@ -13,7 +13,7 @@
     <form action="{% url 'polls:vote' question.id %}" method="get">   <!--post-->
        <!-- {% csrf_token %}-->
         <fieldset>
-            <legend><h1>{{ question.question_text|safe }}</h1></legend>
+            <legend><h1>{{ question.question_text|safe }}</h1></legend> <!--Remove |safe-->
             {% if error_message %}
                 <p><strong>{{ error_message }}</strong></p>
             {% endif %}
