@@ -104,8 +104,7 @@ https://github.com/SamiPartanen/Cybersecurity-project/blob/main/djangotutorial/d
 https://github.com/SamiPartanen/Cybersecurity-project/blob/main/djangotutorial/polls/views.py#L155
 
 5.	The fifth flaw is sensitive data exposure is flaw, where important information like passwords, credit card numbers or secret keys are not protected and attacker can gain access to them. This can happen if that data is weakly encrypted, stored in plain text or
-
-transported unsafely.[5] In this app the flaw is visible when user goes to /polls/sensitive_data/ where the secret key is displayed. This is because the secret key is stored in text in the views.py file and it returns the key.  
+transported unsafely.[5] In this app the flaw is visible when user goes to /polls/sensitive_data/ where the secret key is displayed. This is because the secret key is stored in text in the views.py file and it returns the key.
 
 To fix this flaw, we do a env. file where the secret key is stored and the secret key from settings is removed. Then the secret key is stored safely and not in the settings. Also in the views file, the method need to be removed and the secret key is no longer visible 
 from /polls/sensitive_data/. 
