@@ -99,15 +99,23 @@ https://github.com/SamiPartanen/Cybersecurity-project/blob/main/djangotutorial/d
 
 FLAW 5: Sensitive data exposure
 
-https://github.com/SamiPartanen/Cybersecurity-project/blob/main/djangotutorial/djangotutorial/settings.py#L86
+https://github.com/SamiPartanen/Cybersecurity-project/blob/main/djangotutorial/djangotutorial/settings.py#L24
 
-5.	The fifth flaw is sensitive data exposure is flaw, where important information like passwords or credit card numbers are not protected and attacker can gain access to them. This can happen if that data is weakly encrypted, stored in plain text or transported unsafely.[5] In this app, this flaw is accessible with the security misconfiguration flaw where secret key is stored, but also in databases, the admin name and password are stored in plain text. 
+https://github.com/SamiPartanen/Cybersecurity-project/blob/main/djangotutorial/polls/views.py#L155
 
-To fix this flaw, the security misconfiguration flaw is important to be fixed, but also that usernames or passwords are not stored in plain text with the application files. With this Django app the username and password can be removed, because Django takes care of that without needing to secure them myself. 
+5.	The fifth flaw is sensitive data exposure is flaw, where important information like passwords, credit card numbers or secret keys are not protected and attacker can gain access to them. This can happen if that data is weakly encrypted, stored in plain text or
 
-FIXES: Fixing the security misconfiguration flaw.
+transported unsafely.[5] In this app the flaw is visible when user goes to /polls/sensitive_data/ where the secret key is displayed. This is because the secret key is stored in text in the views.py file and it returns the key.  
 
-Removing hardcoded username and password https://github.com/SamiPartanen/Cybersecurity-project/blob/main/djangotutorial/djangotutorial/settings.py#L86 
+To fix this flaw, we do a env. file where the secret key is stored and the secret key from settings is removed. Then the secret key is stored safely and not in the settings. Also in the views file, the method need to be removed and the secret key is no longer visible 
+from /polls/sensitive_data/. 
+
+FIXES: https://github.com/SamiPartanen/Cybersecurity-project/blob/main/djangotutorial/polls/views.py#L161
+
+https://github.com/SamiPartanen/Cybersecurity-project/blob/main/djangotutorial/.env
+
+https://github.com/SamiPartanen/Cybersecurity-project/blob/main/djangotutorial/djangotutorial/settings.py#L27
+
 
 
 
