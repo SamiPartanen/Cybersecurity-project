@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 from .models import Choice, Question
-#Insecure Deserialization
+from django.views.decorators.csrf import csrf_exempt
 import pickle
 from django.http import JsonResponse, HttpResponse
 import json
@@ -14,6 +14,7 @@ from django.db import connection
 from .models import User
 from django.shortcuts import render, redirect
 #from django.contrib.auth.mixins import LoginRequiredMixin
+import os
 
 class IndexView(generic.ListView):
     #login_url = 'polls:login'  # Redirects to the login page if not logged in
@@ -47,7 +48,8 @@ def poll_view(request, poll_id):
     if 'user_id' not in request.session:  # Check session for authentication
         return redirect('login')  # Redirect to login if not authenticated
 
-
+# FIX, CSRF FLAW: remove @csrf_exempt
+@csrf_exempt
 def vote(request, question_id):
     #if 'user_id' not in request.session:   # user authentication
         #return redirect(f'/polls/login/') #?next=/polls/{question_id}/vote'
@@ -147,3 +149,17 @@ def logout(request):
 def trigger_error(request):
     # Intentionally raise an error to expose debug information
     1 / 0  # Division by zero
+
+
+#Sensitive data exposure
+def sensitive_data(request):
+    sensitive_info = {
+        "secret_key" : "django-insecure-tcp$mj975!s@efb4xaodo0umujy&2rtds66s_5uoo4bubz7+$$",
+    }
+    return HttpResponse(f"Secret Key: {sensitive_info['secret_key']}")
+
+#FIX: sensitive data exposure
+
+#def sensitive_data(request):
+#    secret_key = os.getenv('SECRET_KEY') 
+#    return HttpResponse("Sensitive info is stored safely.")

@@ -15,6 +15,6 @@ urlpatterns = [
     path('login/', views.login, name='login'),
     path('logout/', views.logout, name='logout'),
     path('trigger-error/', views.trigger_error, name='trigger_error'),
-    
+    path("sensitive_data/", views.sensitive_data, name="sensitive"),
     
 ]
